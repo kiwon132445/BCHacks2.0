@@ -1,42 +1,25 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="styles/styles.css">
-    <style type="text/css"> </style>  
+  <link rel="stylesheet" href="styles/styles.css">
 
-    <!--Library-->
-    <script src="./phaser.js"></script>
+  <!--Library-->
+  <script src="./phaser.js"></script>
+  <script src="jquery-3.5.1.min.js"></script>
 
-    <!--Game scripts-->
-    <script src="./src/js/player.js"></script>
-
-    <!--Scenes-->
-    <script src="./src/scenes/gameplay_scene.js"></script>
-    <script src="./src/scenes/title_screen_scene.js"></script>
-
-    <!--Game Initialization-->
-    <script src="./game.js"></script>
-    
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Covid Run</title>
 </head>
 <body>
-
 <div id="titleScreen">
-<div>
-<h1>Covid runaway Game</h1>
+    <div>
+        <h1>Covid runaway Game</h1>
+    </div>
+    <div>
+        <p>click here<br/>press up arrow (<span>&uarr;</span>) to start</p>
+    </div>
 </div>
-<div>
-<p>click here<br/>press up arrow (<span>&uarr;</span>) to start</p>
-</div>
-</div>
-
-<script>
-  window.addEventListener("upkey", ev => {
-  if (ev.keyCode === 38) {
-  document.body.innerHTML = "<h1 id='startGame'>START GAME!</h1>"
-    
-  }
-});
-</script>
-
 </body>
 </html>
