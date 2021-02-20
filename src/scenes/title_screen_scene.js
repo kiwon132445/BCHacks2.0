@@ -15,12 +15,13 @@ class title_screen_scene extends Phaser.Scene {
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
 
-        this.add
-        .text(screenCenterX, screenCenterY , 'Play', {
-            font: '50px Ariel',
-            fill: 'blue',
-        })
-        .setOrigin(0.5); 
+        this.startButton = new TextButton(
+            this,
+            screenCenterX,
+            screenCenterY,
+            'play',
+            { font: '40px Ariel', fill: 'blue' },
+            () => this.scene.start('gameplay_scene')
     }
 
     update(){
