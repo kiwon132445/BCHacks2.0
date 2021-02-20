@@ -21,7 +21,7 @@ class title_screen_scene extends Phaser.Scene {
             screenCenterY,
             'play',
             { font: '40px Ariel', fill: 'blue' },
-            () => this.scene.start('gameplay_scene')
+            () => this.scene.start('gameplay_scene'));
     }
 
     update(){
