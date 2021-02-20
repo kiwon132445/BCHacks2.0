@@ -17,10 +17,7 @@ var config = {
           debug: false,
         },
       },
-    scene: {
-        preload: preload,
-        create: create
-    }
+    scene: [title_screen_scene, gameplay_scene]
 };
 
 const game = new Phaser.Game(config);
