@@ -1,29 +1,21 @@
-function preload ()
-{
-    this.load.setBaseURL('http://labs.phaser.io');
+class gameplay_scene extends Phaser.Scene {
+    constructor() {
+        super({
+          key: 'gameplay_scene',
+        });
+    }
 
-    this.load.image('sky', 'assets/skies/space3.png');
-    this.load.image('logo', 'assets/sprites/phaser3-logo.png');
-    this.load.image('red', 'assets/particles/red.png');
-}
+    init() {}
 
-function create ()
-{
-    this.add.image(400, 300, 'sky');
+    preload() {
 
-    var particles = this.add.particles('red');
+    }
 
-    var emitter = particles.createEmitter({
-        speed: 100,
-        scale: { start: 1, end: 0 },
-        blendMode: 'ADD'
-    });
+    create() {
 
-    var logo = this.physics.add.image(400, 100, 'logo');
+    }
+    
+    update() {
 
-    logo.setVelocity(100, 200);
-    logo.setBounce(1, 1);
-    logo.setCollideWorldBounds(true);
-
-    emitter.startFollow(logo);
+    }
 }
