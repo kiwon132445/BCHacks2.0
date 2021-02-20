@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< Updated upstream
     <!--Library-->
+=======
+  <link rel="stylesheet" href="styles/styles.css">
+    <style type="text/css"> </style>  
+>>>>>>> Stashed changes
     <script src="./phaser.js"></script>
 
     <!--Game scripts-->
@@ -13,7 +18,27 @@
 
     <!--Game Initialization-->
     <script src="./game.js"></script>
+    
 </head>
 <body>
+
+<div id="titleScreen">
+<div>
+<h1>Covid runaway Game</h1>
+</div>
+<div>
+<p>click here<br/>press up arrow (<span>&uarr;</span>) to start</p>
+</div>
+</div>
+
+<script>
+  window.addEventListener("upkey", ev => {
+  if (ev.keyCode === 38) {
+  document.body.innerHTML = "<h1 id='startGame'>START GAME!</h1>"
+    
+  }
+});
+</script>
+
 </body>
 </html>
