@@ -21,6 +21,9 @@ class gameplay_scene extends Phaser.Scene {
     update() {
         //the player control
         this.player.player_controls();
+        for (i in this.covid) {
+            
+        }
     }
 
     //This adds the player to the game

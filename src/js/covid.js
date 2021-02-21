@@ -4,5 +4,12 @@ class Covid extends Phaser.Physics.Arcade.Sprite {
 
         this.speed = speed;
     }
-    
+
+    fallingCovid() {
+        this.setVelocityY(-this.speed);
+    }
+
+    resetCovid() {
+
+    }
 }
