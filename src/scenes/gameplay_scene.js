@@ -19,9 +19,9 @@ class gameplay_scene extends Phaser.Scene {
             frameHeight: 20,
             endFrame: 3
         });
-
+        this.load.image('sanitizer', '../../assets/hand_sanitizer.jpg');
         this.load.image('covid', '../../assets/covid.png')
-        this.load.image('statusBar','../../assets/Bar.jpg')
+        this.load.image('statusBar','../../assets/Bar.png')
         this.load.image('mask','../../assets/mask.png')
     }
 
@@ -43,6 +43,8 @@ class gameplay_scene extends Phaser.Scene {
 
         this.spawnMask();
         setInterval(() => {this.spawnMask()}, 7000)
+        this.spawnSanitizer();
+        setInterval(()=>{this.spawnSanitizer()}, 30000)
 
         
         let config = {
@@ -57,7 +59,7 @@ class gameplay_scene extends Phaser.Scene {
           this.anims.create(config);    
         
         this.physics.add.overlap(this.player, this.covid, this.infection, null, this);
-        this.physics.add.overlap(this.player, this.mask, this.resetMask, null, this);
+        this.physics.add.overlap(this.player, this.mask, this.replaceMask, null, this);
         
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
@@ -99,7 +101,8 @@ class gameplay_scene extends Phaser.Scene {
         for (let i = 0; i < this.covid.children.entries.length; i++) {
             this.covid.children.entries[i].fallingCovid();   
         }
-        this.mask.fallingMask();   
+        this.mask.fallingMask();
+        this.sanitizer.fallingSanitizer();   
 
         if(this.player.playerMask <= 0) {
             this.die();
@@ -132,7 +135,7 @@ class gameplay_scene extends Phaser.Scene {
         let covid = new Covid(
             {
             scene: this,
-            x: Phaser.Math.Between(0, this.scale.width),
+            x: Phaser.Math.Between(5, this.scale.width-5),
             y: 0,
             sprite: 'covid',
           },
@@ -147,7 +150,7 @@ class gameplay_scene extends Phaser.Scene {
         this.mask = new Mask(
             {
             scene: this,
-            x: Phaser.Math.Between(0, this.scale.width),
+            x: Phaser.Math.Between(5, this.scale.width-5),
             y: 0,
             sprite: 'mask',
           },
@@ -155,7 +158,22 @@ class gameplay_scene extends Phaser.Scene {
         );
         this.add.existing(this.mask).setScale(0.1);
         this.physics.add.existing(this.mask);
-        this.physics.add.overlap(this.player, this.mask, this.resetMask, null, this)
+        this.physics.add.overlap(this.player, this.mask, this.replaceMask, null, this)
+    }
+
+    spawnSanitizer() {
+        this.sanitizer = new Sanitizer(
+            {
+            scene: this,
+            x: Phaser.Math.Between(5, this.scale.width-5),
+            y: 0,
+            sprite: 'sanitizer',
+          },
+          250
+        );
+        this.add.existing(this.sanitizer).setScale(0.1);
+        this.physics.add.existing(this.sanitizer);
+        this.physics.add.overlap(this.player, this.sanitizer, this.heal, null, this)
     }
 
     die() {
@@ -167,18 +185,24 @@ class gameplay_scene extends Phaser.Scene {
     infection(player, covid) {
         covid.disableBody(true, true);
         player.playerHealth-=1;
-        console.log("Player Health: " + player.playerHealth);
+        player.playerMask-=10;
         if(player.playerHealth <= 0) {
+            this.die();
+        }
+        if (player.playerMask <= 0) {
             this.die();
         }
     }
 
-    resetMask(player, mask) {
+    replaceMask(player, mask) {
         mask.disableBody(true, true);
         player.playerMask = 100;
-        // this.spawnMask();
-        this.physics.add.overlap(this.player, this.mask, this.resetMask, null, this);
     }
 
-    
+    heal(player, sanitizer) {
+        sanitizer.disableBody(true, true);
+        if(player.playerHealth < 3 && player.playerHealth > 0) {
+            player.playerHealth+=1
+        }
+    }
 }
