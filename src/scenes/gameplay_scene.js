@@ -12,11 +12,14 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('background','../../assets/background.png');
         this.load.image('player', '../../assets/dog.jpg');
         this.load.image('covid', '../../assets/covid.jpg')
     }
 
     create() {
+        this.background = this.add.tileSprite(0,0,config.width,config.height,"background");
+        this.background.setOrigin(0,0);
         this.addPlayer();
         for(let i = 0; i < 10; i++) {
             this.spawnCovid();
@@ -26,14 +29,7 @@ class gameplay_scene extends Phaser.Scene {
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
 
-        this.add
-        .text(screenCenterX, screenCenterY , 'Game Over', {
-            font: '50px Ariel',
-            fill: 'blue',
-        })
-        .setOrigin(0.5); 
-
-        this.playButton = this.add.text(screenCenterX - 45, screenCenterY, 'Go Back', {font: '45px Ariel', fill: 'white'})
+        this.playButton = this.add.text(screenCenterX, screenCenterY, 'Go Back', {font: '45px Ariel', fill: 'white'})
             .setInteractive()
             .on('pointerup', () => {
                 this.die()
@@ -41,6 +37,7 @@ class gameplay_scene extends Phaser.Scene {
     }
     
     update() {
+        this.background.tilePositionY -=1.5;
         //the player control
         this.player.player_controls();
         if (this.counter >= this.difficulty && this.covid.children.entries.length <= 100) {
@@ -66,7 +63,7 @@ class gameplay_scene extends Phaser.Scene {
           this.covid
         );
     
-        this.add.existing(this.player).setScale(0.01);
+        this.add.existing(this.player).setScale(0.025);
         this.physics.add.existing(this.player);
         this.player.setCollideWorldBounds(true);
     }
