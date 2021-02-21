@@ -8,7 +8,7 @@ class Covid extends Phaser.Physics.Arcade.Sprite {
 
     fallingCovid() {
         console.log(1);
-        this.setVelocityY(-this.speed);
+        this.setVelocityY(this.speed);
         if (this.y > this.scene.scale.height) {
             this.resetCovid();
         }

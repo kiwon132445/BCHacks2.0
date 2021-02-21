@@ -31,9 +31,9 @@ class gameplay_scene extends Phaser.Scene {
     update() {
         //the player control
         this.player.player_controls();
-        for (let i = 0; i < this.covid.length; i++) {
-            console.log(2);
-            this.covid[i].fallingCovid();
+        let i;
+        for (i = 0; i < this.covid.children.entries.length; i++) {
+            this.covid.children.entries[i].fallingCovid();
         }
     }
 
@@ -66,10 +66,9 @@ class gameplay_scene extends Phaser.Scene {
           200
         );
 
-        this.add.existing(this.player).setScale(0.01);
-        this.physics.add.existing(this.player);
+        this.add.existing(covid).setScale(0.01);
+        this.physics.add.existing(covid);
         this.covid.add(covid);
-        console.log(this.covid)
     }
 
     die() {
