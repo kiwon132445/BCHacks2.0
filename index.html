@@ -29,9 +29,25 @@
         <h1>Covid runaway Game</h1>
     </div>
     <div>
-        <p><a href="./src/game.html" style="z-index: 100;">click here</a><br/>press up arrow (<span>&uarr;</span>) to start</p>
+        <div id="rules">
+            RULES:<br/> - You must use w,a,s,d keys <br/>- Dodge the Corona Virus. If you get hit 3 times, your out. 
+            <br/> - You can view your health at the top. <br/>- Aim to collect masks to maintain mask usability. If it reaches 0, that will be fatal.
+    
+        <p>Click<a style="text-decoration: none" href="/src/game.html"> HERE </a><br/>OR <br/> Press UP Arrow (<span>&uarr;</span>) To Begin!</p>
+        
+       
+
+    </div>
+
+        
+        
         <script type="text/javascript">
 
+        window.addEventListener('keyup', function (e) {
+            document.location.href ='./src/game.html';
+            })
+
+        
 		document.onmousemove = animateCircles;
 
 		var colors = ['#ccc','#6cf','#eba13a'];
@@ -66,6 +82,7 @@
 
 		</script>
     </div>
+   
 </div>
 </body>
 </html>
