@@ -3,26 +3,30 @@ class game_over_scene extends Phaser.Scene {
       super('game_over_scene');
     }
 
-    init() {}
+    init (score) {
+        this.score = score.score
+    }
 
     preload() {
         this.load.image('end-screen', '../../assets/gameover-screen.jpg');
     }
     
     create() {
-        this.scene.backgroundColor = "white";
         const screenX = this.cameras.main.width;
         const screenY = this.cameras.main.height;
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
         this.add.image(0, 0, 'end-screen').setOrigin(0).setScale(1.9);
 
-        this.add
-        .text(screenCenterX, screenCenterY - 100, 'Game Over', {
+        this.add.text(screenCenterX, screenCenterY - 150, 'Game Over', {
             font: '120px Verdana',
             fill: 'red',
-        })
-        .setOrigin(0.5); 
+        }).setOrigin(0.5); 
+
+        this.add.text(screenCenterX, screenCenterY - 500, 'Score: ' + this.score, {
+            font: '120px Verdana',
+            fill: 'white',
+        }).setOrigin(0.5); 
 
         this.playButton = this.add.text(screenCenterX, screenCenterY + 30, 'Go Back', {font: '45px Verdana', fill: 'white'})
             .setInteractive()

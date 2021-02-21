@@ -70,6 +70,9 @@ class gameplay_scene extends Phaser.Scene {
             .on('pointerup', () => {
                 this.die()
             }).setOrigin(0); 
+        
+        this.startTime = new Date();
+        
     }
 
     buttonHoverState() {
@@ -156,7 +159,9 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     die() {
-        this.scene.start("game_over_scene")
+        this.endTime = new Date()
+        this.score = this.endTime - this.startTime
+        this.scene.start("game_over_scene", { score: this.score });
     }
 
     infection(player, covid) {
