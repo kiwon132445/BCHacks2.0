@@ -22,10 +22,10 @@ class gameplay_scene extends Phaser.Scene {
         this.background = this.add.tileSprite(0,0,config.width,config.height,"background");
         this.background.setOrigin(0,0);
         
-        var statusBar=new statusBar();
-        statusBar.x=game.width/2-statusBar;
-        statusBar.y=game.height/2;
-        statusBar.setPercent()
+        // var statusBar=new statusBar();
+        // statusBar.x=game.width/2-statusBar;
+        // statusBar.y=game.height/2;
+        // statusBar.setPercent()
 
         this.addPlayer();
         for(let i = 0; i < 10; i++) {
@@ -66,7 +66,7 @@ class gameplay_scene extends Phaser.Scene {
             y: this.scale.height/2,
             sprite: 'player',
           },
-          200,
+          400,
           this.covid
         );
     
@@ -83,10 +83,10 @@ class gameplay_scene extends Phaser.Scene {
             y: 0,
             sprite: 'covid',
           },
-          Phaser.Math.Between(100, 300)
+          Phaser.Math.Between(100, 500)
         );
 
-        this.add.existing(covid).setScale(0.01);
+        this.add.existing(covid).setScale(0.05);
         this.physics.add.existing(covid);
         this.covid.add(covid);
     }
@@ -98,6 +98,7 @@ class gameplay_scene extends Phaser.Scene {
     infection(player, covid) {
         covid.disableBody(true, true);
         player.playerHealth-=1;
+        console.log("Player Health: " + player.playerHealth);
         if(player.playerHealth <= 0) {
             this.die();
         }
