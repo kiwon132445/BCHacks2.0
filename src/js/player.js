@@ -1,3 +1,5 @@
+const { threadId } = require("worker_threads");
+
 class Player extends Phaser.Physics.Arcade.Sprite {
     constructor(config, speed, covid) {
         super(config.scene, config.x, config.y, config.sprite);
