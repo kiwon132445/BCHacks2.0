@@ -13,13 +13,19 @@ class gameplay_scene extends Phaser.Scene {
 
     preload() {
         this.load.image('background','../../assets/background.png');
-        this.load.image('player', '../../assets/dog.jpg');
+        // this.load.sprite('player', '../../assets/open.png');
+        this.load.spritesheet('player', '../../assets/blocky_walkright.png', {
+            frameWidth: 17,
+            frameHeight: 24,
+            endFrame: 4
+        });
+
         this.load.image('covid', '../../assets/covid.jpg')
         this.load.image('statusBar','../../assets/Bar.jpg')
     }
 
     create() {
-        this.background = this.add.tileSprite(0,0,config.width,config.height,"background");
+        this.background = this.add.tileSprite(0,0,this.scale.width, this.scale.height,"background");
         this.background.setOrigin(0,0);
         
         // var statusBar=new statusBar();
@@ -32,6 +38,17 @@ class gameplay_scene extends Phaser.Scene {
         for(let i = 0; i < 10; i++) {
             this.spawnCovid();
         }
+
+        let config = {
+            key: 'WalkCycle',
+            frames: this.anims.generateFrameNumbers('player', {
+              start: 0,
+              end: 4,
+            }),
+            frameRate: 4,
+            repeat: -1,
+          };
+          this.anims.create(config);
         
         this.physics.add.overlap(this.player, this.covid, this.infection, null, this);
 
@@ -72,7 +89,7 @@ class gameplay_scene extends Phaser.Scene {
           this.covid
         );
     
-        this.add.existing(this.player).setScale(0.025);
+        this.add.existing(this.player).setScale(5);
         this.physics.add.existing(this.player);
         this.player.setCollideWorldBounds(true);
     }
