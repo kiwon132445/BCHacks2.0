@@ -20,7 +20,7 @@ class gameplay_scene extends Phaser.Scene {
             endFrame: 3
         });
 
-        this.load.image('covid', '../../assets/covid.jpg')
+        this.load.image('covid', '../../assets/covid.png')
         this.load.image('statusBar','../../assets/Bar.jpg')
     }
 
@@ -102,10 +102,10 @@ class gameplay_scene extends Phaser.Scene {
             y: 0,
             sprite: 'covid',
           },
-          Phaser.Math.Between(100, 500)
+          Phaser.Math.Between(200, 500)
         );
 
-        this.add.existing(covid).setScale(0.05);
+        this.add.existing(covid).setScale(0.1);
         this.physics.add.existing(covid);
         this.covid.add(covid);
     }
