@@ -14,10 +14,10 @@ class gameplay_scene extends Phaser.Scene {
     preload() {
         this.load.image('background','../../assets/background.png');
         // this.load.sprite('player', '../../assets/open.png');
-        this.load.spritesheet('player', '../../assets/blocky_walkright.png', {
-            frameWidth: 17,
-            frameHeight: 24,
-            endFrame: 4
+        this.load.spritesheet('player', '../../assets/blocky_walkleft.png', {
+            frameWidth: 16,
+            frameHeight: 17,
+            endFrame: 3
         });
 
         this.load.image('covid', '../../assets/covid.jpg')
@@ -43,9 +43,9 @@ class gameplay_scene extends Phaser.Scene {
             key: 'WalkCycle',
             frames: this.anims.generateFrameNumbers('player', {
               start: 0,
-              end: 4,
+              end: 2,
             }),
-            frameRate: 4,
+            frameRate: 8,
             repeat: -1,
           };
           this.anims.create(config);
