@@ -19,7 +19,7 @@ class gameplay_scene extends Phaser.Scene {
             frameHeight: 20,
             endFrame: 3
         });
-        this.load.image('sanitizer', '../../assets/hand_sanitizer.jpg');
+        this.load.image('sanitizer', '../../assets/hand_sanitizer.png');
         this.load.image('covid', '../../assets/covid.png')
         this.load.image('statusBar','../../assets/Bar.png')
         this.load.image('mask','../../assets/mask.png')
@@ -171,7 +171,7 @@ class gameplay_scene extends Phaser.Scene {
           },
           250
         );
-        this.add.existing(this.sanitizer).setScale(0.1);
+        this.add.existing(this.sanitizer).setScale(0.2);
         this.physics.add.existing(this.sanitizer);
         this.physics.add.overlap(this.player, this.sanitizer, this.heal, null, this)
     }
