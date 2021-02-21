@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="styles/styles.css">
+    <style type="text/css"> </style>  
+
     <!--Library-->
     <script src="./src/phaser.js"></script>
 
@@ -12,8 +15,32 @@
     <script src="./src/scenes/title_screen_scene.js"></script>
 
     <!--Game Initialization-->
+<<<<<<< HEAD
     <script src="./src/game.js"></script>
+=======
+    <script src="./game.js"></script>
+    
+>>>>>>> main
 </head>
 <body>
+
+<div id="titleScreen">
+<div>
+<h1>Covid runaway Game</h1>
+</div>
+<div>
+<p>click here<br/>press up arrow (<span>&uarr;</span>) to start</p>
+</div>
+</div>
+
+<script>
+  window.addEventListener("upkey", ev => {
+  if (ev.keyCode === 38) {
+  document.body.innerHTML = "<h1 id='startGame'>START GAME!</h1>"
+    
+  }
+});
+</script>
+
 </body>
 </html>
