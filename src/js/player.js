@@ -4,6 +4,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     
     this.speed = speed;
     this.playerHealth = 3;
+    this.playerMask = 100;
     
     this.key = this.scene.input.keyboard.addKeys({
       up: Phaser.Input.Keyboard.KeyCodes.W,
