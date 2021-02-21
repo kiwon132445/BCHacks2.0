@@ -42,6 +42,20 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     spawnCovid() {
+        let covid = new Covid(
+            {
+            scene: this,
+            x: Phaser.Math.Between(0, config.width),
+            y: 0,
+            sprite: 'covid',
+          },
+          200,
+          this.covid
+        );
 
+        this.add.existing(this.player).setScale(0.01);
+        this.physics.add.existing(this.player);
+
+        this.covid.add(covid);
     }
 }
