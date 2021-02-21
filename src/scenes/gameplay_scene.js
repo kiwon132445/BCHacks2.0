@@ -23,6 +23,7 @@ class gameplay_scene extends Phaser.Scene {
         //the player control
         this.player.player_controls();
         for (let i = 0; i < this.covid.length; i++) {
+            console.log(2);
             this.covid[i].fallingCovid();
         }
     }
@@ -60,5 +61,6 @@ class gameplay_scene extends Phaser.Scene {
         this.physics.add.existing(covid);
 
         this.covid.add(covid);
+        console.log(this.covid)
     }
 }
