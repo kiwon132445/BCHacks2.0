@@ -12,10 +12,15 @@ class gameplay_scene extends Phaser.Scene {
     preload() {
         this.load.image('player', '../../assets/dog.jpg');
         this.load.image('covid', '../../assets/covid.jpg')
+        this.load.image('statusBar','../../assets/Bar.jpg')
     }
 
     create() {
         this.addPlayer();
+        var statusBar=new statusBar();
+        statusBar.x=game.width/2-statusBar;
+        statusBar.y=game.height/2;
+        statusBar.setPercent()
     }
     
     update() {
