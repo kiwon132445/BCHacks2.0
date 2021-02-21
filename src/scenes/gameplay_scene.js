@@ -29,18 +29,22 @@ class gameplay_scene extends Phaser.Scene {
         this.background = this.add.tileSprite(0,0,this.scale.width, this.scale.height,"background");
         this.background.setOrigin(0,0);
         
-        
-
         this.addPlayer();
 
         this.hp = new HealthBar(this, this.scale.width - 520, 10, this.player);
+        this.maskText = this.add.text(this.scale.width - 520, 100, 'Mask durability: ' + this.player.playerMask , {
+            font: '50px Verdana',
+            fill: 'white',
+        }).setOrigin(0)
 
         for(let i = 0; i < 20; i++) {
             this.spawnCovid();
         }
 
         this.spawnMask();
+        setInterval(() => {this.spawnMask()}, 7000)
 
+        
         let config = {
             key: 'WalkCycle',
             frames: this.anims.generateFrameNumbers('player', {
@@ -53,8 +57,8 @@ class gameplay_scene extends Phaser.Scene {
           this.anims.create(config);    
         
         this.physics.add.overlap(this.player, this.covid, this.infection, null, this);
+        this.physics.add.overlap(this.player, this.mask, this.resetMask, null, this);
         
-
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
 
@@ -92,9 +96,15 @@ class gameplay_scene extends Phaser.Scene {
         for (let i = 0; i < this.covid.children.entries.length; i++) {
             this.covid.children.entries[i].fallingCovid();   
         }
-        this.mask.fallingMask();
-        
-        
+        this.mask.fallingMask();   
+
+        if(this.player.playerMask <= 0) {
+            this.die();
+        }
+        this.player.playerMask -= 0.03;
+        this.maskText.text = 'Mask durability: ' + Math.floor(this.player.playerMask)
+        // console.log(this.player.playerMask);
+
     }
 
     //This adds the player to the game
@@ -125,7 +135,6 @@ class gameplay_scene extends Phaser.Scene {
           },
           Phaser.Math.Between(200, 500)
         );
-
         this.add.existing(covid).setScale(0.1);
         this.physics.add.existing(covid);
         this.covid.add(covid);
@@ -143,6 +152,7 @@ class gameplay_scene extends Phaser.Scene {
         );
         this.add.existing(this.mask).setScale(0.1);
         this.physics.add.existing(this.mask);
+        this.physics.add.overlap(this.player, this.mask, this.resetMask, null, this)
     }
 
     die() {
@@ -150,7 +160,6 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     infection(player, covid) {
-        
         covid.disableBody(true, true);
         player.playerHealth-=1;
         console.log("Player Health: " + player.playerHealth);
@@ -158,4 +167,13 @@ class gameplay_scene extends Phaser.Scene {
             this.die();
         }
     }
+
+    resetMask(player, mask) {
+        mask.disableBody(true, true);
+        player.playerMask = 100;
+        // this.spawnMask();
+        this.physics.add.overlap(this.player, this.mask, this.resetMask, null, this);
+    }
+
+    
 }

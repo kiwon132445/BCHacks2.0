@@ -19,12 +19,12 @@ class game_over_scene extends Phaser.Scene {
 
         this.add
         .text(screenCenterX, screenCenterY - 100, 'Game Over', {
-            font: '120px Ariel',
+            font: '120px Verdana',
             fill: 'red',
         })
         .setOrigin(0.5); 
 
-        this.playButton = this.add.text(screenCenterX, screenCenterY + 30, 'Go Back', {font: '45px Ariel', fill: 'white'})
+        this.playButton = this.add.text(screenCenterX, screenCenterY + 30, 'Go Back', {font: '45px Verdana', fill: 'white'})
             .setInteractive()
             .on('pointerover', () => this.buttonHoverState())
             .on('pointerout', () => this.buttonRestState())
