@@ -135,7 +135,7 @@ class gameplay_scene extends Phaser.Scene {
         let covid = new Covid(
             {
             scene: this,
-            x: Phaser.Math.Between(0, this.scale.width),
+            x: Phaser.Math.Between(5, this.scale.width-5),
             y: 0,
             sprite: 'covid',
           },
@@ -150,7 +150,7 @@ class gameplay_scene extends Phaser.Scene {
         this.mask = new Mask(
             {
             scene: this,
-            x: Phaser.Math.Between(0, this.scale.width),
+            x: Phaser.Math.Between(5, this.scale.width-5),
             y: 0,
             sprite: 'mask',
           },
@@ -165,7 +165,7 @@ class gameplay_scene extends Phaser.Scene {
         this.sanitizer = new Sanitizer(
             {
             scene: this,
-            x: Phaser.Math.Between(0, this.scale.width),
+            x: Phaser.Math.Between(5, this.scale.width-5),
             y: 0,
             sprite: 'sanitizer',
           },
