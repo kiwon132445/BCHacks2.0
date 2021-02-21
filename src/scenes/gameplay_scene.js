@@ -11,6 +11,7 @@ class gameplay_scene extends Phaser.Scene {
 
     preload() {
         this.load.image('player', '../../assets/dog.jpg');
+        this.load.image('covid', '../../assets/covid.jpg')
     }
 
     create() {
@@ -18,11 +19,15 @@ class gameplay_scene extends Phaser.Scene {
     }
     
     update() {
+        //the player control
         this.player.player_controls();
+        for (i in this.covid) {
+            
+        }
     }
 
+    //This adds the player to the game
     addPlayer() {
-        console.log(this.scale.width)
         this.player = new Player(
           {
             scene: this,
@@ -30,11 +35,30 @@ class gameplay_scene extends Phaser.Scene {
             y: this.scale.height/2,
             sprite: 'player',
           },
-          300,
+          200,
           this.covid
         );
     
-        this.add.existing(this.player).setScale(0.1);
+        this.add.existing(this.player).setScale(0.01);
         this.physics.add.existing(this.player);
-      }
+        this.player.setCollideWorldBounds(true);
+    }
+
+    spawnCovid() {
+        let covid = new Covid(
+            {
+            scene: this,
+            x: Phaser.Math.Between(0, config.width),
+            y: 0,
+            sprite: 'covid',
+          },
+          200,
+          this.covid
+        );
+
+        this.add.existing(this.player).setScale(0.01);
+        this.physics.add.existing(this.player);
+
+        this.covid.add(covid);
+    }
 }

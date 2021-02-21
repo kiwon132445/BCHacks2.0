@@ -1,0 +1,22 @@
+{
+  "name": "bchacks2.0",
+  "version": "1.0.0",
+  "description": "1 Day collaboration project for hackathon",
+  "main": "game.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kiwon132445/BCHacks2.0.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kiwon132445/BCHacks2.0/issues"
+  },
+  "homepage": "https://github.com/kiwon132445/BCHacks2.0#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
