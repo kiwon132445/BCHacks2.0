@@ -28,9 +28,11 @@ class gameplay_scene extends Phaser.Scene {
         // statusBar.setPercent()
 
         this.addPlayer();
+
         for(let i = 0; i < 10; i++) {
             this.spawnCovid();
         }
+        
         this.physics.add.overlap(this.player, this.covid, this.infection, null, this);
 
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
