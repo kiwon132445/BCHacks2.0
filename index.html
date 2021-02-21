@@ -1,18 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <!--Library-->
-  <link rel="stylesheet" href="styles/styles.css">
-    <style type="text/css"> </style>  
-    <script src="./phaser.js"></script>
+    <link rel="stylesheet" href="./src/styles/styles.css">
 
-    <!--Game scripts-->
-    <script src="./src/js/player.js"></script>
-
-    <!--Scenes-->
-    <script src="./src/scenes/gameplay_scene.js"></script>
-    <script src="./src/scenes/title_screen_scene.js"></script>
-    <script src="./src/scenes/Health.js"></script>
+    <!--script-->
+    <script src="./src/js/title_screen.js"></script>
 
     <!--Game Initialization-->
     <script src="./game.js"></script>
@@ -21,11 +13,51 @@
 <body>
 
 <div id="titleScreen">
-<div>
-<h1>Covid runaway Game</h1>
-</div>
-<div>
-<p>click here<br/>press up arrow (<span>&uarr;</span>) to start</p>
+    <div>
+        <h1>Covid runaway Game</h1>
+    </div>
+    <div>
+        <p><a href="./src/game.html">click here</a><br/>press up arrow (<span>&uarr;</span>) to start</p>
+    </div>
+    <script>
+
+            window.addEventListener('keyup', function () {
+            document.location.href= "./src/game.html";
+        })
+        
+
+        const wrapper = document.querySelector('.wrapper');    
+        
+        
+        wrapper.addEventListener('mousemove', animateCircles);
+        
+        
+        var colors = ['#ccc','#6cf','#eba13a'];
+        
+        function animateCircles (event) {
+        
+            console.log('hello')
+            var circle = document.createElement("div");
+            circle.style.position = 'fixed';
+            circle.style.zIndex = 999;
+            circle.setAttribute("class", "circle");
+            document.body.appendChild(circle);
+            
+            circle.style.left = event.clientX + 'px';
+            circle.style.top = event.clientY + 'px';
+            
+            var color = colors[Math.floor(Math.random() * colors.length)]
+            circle.style.borderColor = color;
+            circle.style.transition = "all 0.5s linear 0s";
+            circle.style.left = circle.offsetLeft - 20 + 'px';
+            circle.style.top = circle.offsetTop - 20 +'px';
+            
+            circle.style.width = "50px";
+            circle.style.height = "50px";
+            circle.style.borderWidth = "5px";
+            circle.style.opacity = 0;
+        }  
+        </script> 
 </div>
 </div>
 
