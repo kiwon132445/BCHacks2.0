@@ -32,7 +32,7 @@ class gameplay_scene extends Phaser.Scene {
     }
     
     update() {
-        this.background.tilePositionY -=0.5;
+        this.background.tilePositionY -=1.5;
         //the player control
         this.player.player_controls();
         let i;
