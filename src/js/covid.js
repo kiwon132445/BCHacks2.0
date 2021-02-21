@@ -4,5 +4,5 @@ class Covid extends Phaser.Physics.Arcade.Sprite {
 
         this.speed = speed;
     }
-
+    
 }
