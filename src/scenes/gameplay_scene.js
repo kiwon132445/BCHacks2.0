@@ -7,6 +7,8 @@ class gameplay_scene extends Phaser.Scene {
 
     init() {
         this.covid = this.physics.add.group();
+        this.counter = 0;
+        this.difficulty = 20;
     }
 
     preload() {
@@ -16,7 +18,10 @@ class gameplay_scene extends Phaser.Scene {
 
     create() {
         this.addPlayer();
-        this.spawnCovid();
+        for(let i = 0; i < 10; i++) {
+            this.spawnCovid();
+        }
+        this.physics.add.overlap(this.player, this.covid, this.infection, null, this);
 
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
@@ -38,8 +43,12 @@ class gameplay_scene extends Phaser.Scene {
     update() {
         //the player control
         this.player.player_controls();
-        let i;
-        for (i = 0; i < this.covid.children.entries.length; i++) {
+        if (this.counter >= this.difficulty && this.covid.children.entries.length <= 100) {
+            this.spawnCovid();
+            this.counter = 0;
+            this.difficulty += 1;
+        }
+        for (let i = 0; i < this.covid.children.entries.length; i++) {
             this.covid.children.entries[i].fallingCovid();
         }
     }
@@ -70,7 +79,7 @@ class gameplay_scene extends Phaser.Scene {
             y: 0,
             sprite: 'covid',
           },
-          200
+          Phaser.Math.Between(100, 300)
         );
 
         this.add.existing(covid).setScale(0.01);
@@ -82,4 +91,11 @@ class gameplay_scene extends Phaser.Scene {
         this.scene.start("game_over_scene")
     }
 
+    infection(player, covid) {
+        covid.disableBody(true, true);
+        player.playerHealth-=1;
+        if(player.playerHealth <= 0) {
+            this.die();
+        }
+    }
 }
