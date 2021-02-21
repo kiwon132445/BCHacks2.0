@@ -1,17 +1,16 @@
 class Player extends Phaser.Physics.Arcade.Sprite {
-    constructor(config, speed, covid) {
-        super(config.scene, config.x, config.y, config.sprite);
-        
-        this.speed = speed;
-        this.covid = covid;
-        
-        this.key = this.scene.input.keyboard.addKeys({
-            up: Phaser.Input.Keyboard.KeyCodes.W,
-            down: Phaser.Input.Keyboard.KeyCodes.S,
-            left: Phaser.Input.Keyboard.KeyCodes.A,
-            right: Phaser.Input.Keyboard.KeyCodes.D
-          });
-        
+    constructor(config, speed) {
+      super(config.scene, config.x, config.y, config.sprite);
+      
+      this.speed = speed;
+      this.playerHealth = 3;
+      
+      this.key = this.scene.input.keyboard.addKeys({
+        up: Phaser.Input.Keyboard.KeyCodes.W,
+        down: Phaser.Input.Keyboard.KeyCodes.S,
+        left: Phaser.Input.Keyboard.KeyCodes.A,
+        right: Phaser.Input.Keyboard.KeyCodes.D
+      });
     }
 
     player_controls() {
