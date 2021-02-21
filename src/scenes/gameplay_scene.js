@@ -54,7 +54,7 @@ class gameplay_scene extends Phaser.Scene {
           this.covid
         );
     
-        this.add.existing(this.player).setScale(0.01);
+        this.add.existing(this.player).setScale(0.025);
         this.physics.add.existing(this.player);
         this.player.setCollideWorldBounds(true);
     }
