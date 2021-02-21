@@ -12,11 +12,11 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('background','../../assets/background.png');
+        this.load.image('background','../../assets/background2.png');
         // this.load.sprite('player', '../../assets/open.png');
         this.load.spritesheet('player', '../../assets/blocky_walkleft.png', {
             frameWidth: 16,
-            frameHeight: 17,
+            frameHeight: 20,
             endFrame: 3
         });
 
