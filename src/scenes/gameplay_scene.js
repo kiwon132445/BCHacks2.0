@@ -24,14 +24,7 @@ class gameplay_scene extends Phaser.Scene {
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
 
-        this.add
-        .text(screenCenterX, screenCenterY , 'Game Over', {
-            font: '50px Ariel',
-            fill: 'blue',
-        })
-        .setOrigin(0.5); 
-
-        this.playButton = this.add.text(screenCenterX - 45, screenCenterY, 'Go Back', {font: '45px Ariel', fill: 'white'})
+        this.playButton = this.add.text(screenCenterX, screenCenterY, 'Go Back', {font: '45px Ariel', fill: 'white'})
             .setInteractive()
             .on('pointerup', () => {
                 this.die()
