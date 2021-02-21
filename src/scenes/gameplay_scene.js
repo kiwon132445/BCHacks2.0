@@ -17,6 +17,22 @@ class gameplay_scene extends Phaser.Scene {
     create() {
         this.addPlayer();
         this.spawnCovid();
+
+        const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
+        const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
+
+        this.add
+        .text(screenCenterX, screenCenterY , 'Game Over', {
+            font: '50px Ariel',
+            fill: 'blue',
+        })
+        .setOrigin(0.5); 
+
+        this.playButton = this.add.text(screenCenterX - 45, screenCenterY, 'Go Back', {font: '45px Ariel', fill: 'white'})
+            .setInteractive()
+            .on('pointerup', () => {
+                this.die()
+            })
     }
     
     update() {
@@ -57,10 +73,14 @@ class gameplay_scene extends Phaser.Scene {
           200
         );
 
-        this.add.existing(covid).setScale(0.01);
-        this.physics.add.existing(covid);
-
+        this.add.existing(this.player).setScale(0.01);
+        this.physics.add.existing(this.player);
         this.covid.add(covid);
         console.log(this.covid)
     }
+
+    die() {
+        this.scene.start("game_over_scene")
+    }
+
 }
