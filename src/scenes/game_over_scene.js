@@ -15,7 +15,7 @@ class game_over_scene extends Phaser.Scene {
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
 
-        this.add.image(0, 0, 'background').setOrigin(0).setScale(0.8);
+        this.add.image(0, 0, 'background').setOrigin(0).setScale(1.0);
 
         this.add
         .text(screenCenterX, screenCenterY - 100, 'Game Over', {
