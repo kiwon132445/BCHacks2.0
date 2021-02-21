@@ -88,7 +88,11 @@ class gameplay_scene extends Phaser.Scene {
           Phaser.Math.Between(100, 500)
         );
 
+<<<<<<< HEAD
+        this.add.existing(covid).setScale(0.025);
+=======
         this.add.existing(covid).setScale(0.05);
+>>>>>>> 94e74b0d92acc1a5db1adc030531e6f62c2d4912
         this.physics.add.existing(covid);
         this.covid.add(covid);
     }
