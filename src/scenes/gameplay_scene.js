@@ -16,13 +16,14 @@ class gameplay_scene extends Phaser.Scene {
 
     create() {
         this.addPlayer();
+        this.spawnCovid();
     }
     
     update() {
         //the player control
         this.player.player_controls();
-        for (i in this.covid) {
-            
+        for (let i = 0; i < this.covid.length; i++) {
+            this.covid[i].fallingCovid();
         }
     }
 
@@ -48,16 +49,15 @@ class gameplay_scene extends Phaser.Scene {
         let covid = new Covid(
             {
             scene: this,
-            x: Phaser.Math.Between(0, config.width),
+            x: Phaser.Math.Between(0, this.scale.width),
             y: 0,
             sprite: 'covid',
           },
-          200,
-          this.covid
+          200
         );
 
-        this.add.existing(this.player).setScale(0.01);
-        this.physics.add.existing(this.player);
+        this.add.existing(covid).setScale(0.01);
+        this.physics.add.existing(covid);
 
         this.covid.add(covid);
     }
