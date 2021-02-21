@@ -7,6 +7,7 @@ class gameplay_scene extends Phaser.Scene {
 
     init() {
         this.covid = this.physics.add.group();
+        this.mask = this.physics.add.group();
         this.counter = 0;
         this.difficulty = 20;
     }
@@ -22,7 +23,7 @@ class gameplay_scene extends Phaser.Scene {
 
         this.load.image('covid', '../../assets/covid.png')
         this.load.image('statusBar','../../assets/Bar.jpg')
-        this.load.image('mask','../../assets/mask.png')
+        this.load.image('mask','../../assets/mask.jpg')
     }
 
     create() {
@@ -53,8 +54,7 @@ class gameplay_scene extends Phaser.Scene {
           };
           this.anims.create(config);    
         
-        this.physics.add.overlap(this.player, this.covid, this.infection, null, this);
-        
+        this.physics.add.overlap(this.player, this.covid, this.infection, this.mask,  null, this);
 
         const screenCenterX = this.cameras.main.worldView.x + screenX / 2;
         const screenCenterY = this.cameras.main.worldView.y + screenY / 2;
@@ -91,7 +91,8 @@ class gameplay_scene extends Phaser.Scene {
             this.difficulty += 1;
         }
         for (let i = 0; i < this.covid.children.entries.length; i++) {
-            this.covid.children.entries[i].fallingCovid();   
+            this.covid.children.entries[i].fallingCovid();
+            
         }
         this.mask.fallingMask();
         
@@ -140,11 +141,11 @@ class gameplay_scene extends Phaser.Scene {
             y: 0,
             sprite: 'mask',
           },
-          250
+          300
         );
 
-        this.add.existing(this.mask).setScale(0.1);
-        this.physics.add.existing(this.mask);
+        this.add.existing(mask).setScale(0.1);
+        this.physics.add.existing(mask);
     }
 
     die() {
