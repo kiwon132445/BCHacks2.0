@@ -33,18 +33,19 @@ body {
 
 #titleScreen h1 {
   color: #222;
-  font-size: 45px;
+  font-size: 50px;
   font-family: 'Poppins, san-serif';
   text-shadow: 0 1px 2px;
   animation: pulse 6s linear infinite;
   text-transform: uppercase;
   letter-spacing: 0.05em;
-
   top: 5%;
   width: 100%;
   text-align: center;
-  
+}
 
+ul {
+  list-style-type: none;
 }
 
 @keyframes pulse {
@@ -68,7 +69,7 @@ body {
 
 #titleScreen p {
   font-weight: bold;
-  font-size: 30px;
+  font-size: 32px;
   border-style: double none none none ;
   border-color: 	#5933cc;
   
