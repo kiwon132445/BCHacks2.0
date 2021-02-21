@@ -1,6 +1,8 @@
 body {
   height: 100vh;
   background: linear-gradient(#333, rgb(0, 0, 0)) no-repeat;
+  overflow-y: hidden; 
+  overflow-x: hidden; 
 }
 
 
@@ -10,8 +12,8 @@ body {
   margin-top: 50px;
   position: relative;
   width: 800px;
-  height: 700px;
-  background-color: rgb(21, 190, 202);
+  height: 500px;
+  background-image: linear-gradient(135deg, rgba(19, 176, 223, 0.26) 0%, rgba(19, 176, 223, 0.26) 23%,rgba(16, 160, 197, 0.26) 23%, rgba(16, 160, 197, 0.26) 65%,rgba(13, 144, 172, 0.26) 65%, rgba(13, 144, 172, 0.26) 70%,rgba(9, 129, 146, 0.26) 70%, rgba(9, 129, 146, 0.26) 74%,rgba(6, 113, 121, 0.26) 74%, rgba(6, 113, 121, 0.26) 90%,rgba(3, 97, 95, 0.26) 90%, rgba(3, 97, 95, 0.26) 100%),linear-gradient(45deg, rgba(65, 234, 230, 0.26) 0%, rgba(65, 234, 230, 0.26) 28%,rgba(88, 192, 215, 0.26) 28%, rgba(88, 192, 215, 0.26) 55%,rgba(110, 150, 201, 0.26) 55%, rgba(110, 150, 201, 0.26) 66%,rgba(133, 107, 186, 0.26) 66%, rgba(133, 107, 186, 0.26) 80%,rgba(155, 65, 172, 0.26) 80%, rgba(155, 65, 172, 0.26) 85%,rgba(178, 23, 157, 0.26) 85%, rgba(178, 23, 157, 0.26) 100%),linear-gradient(90deg, rgb(27, 194, 246) 0%, rgb(27, 194, 246) 6%,rgb(39, 174, 237) 6%, rgb(39, 174, 237) 32%,rgb(50, 155, 229) 32%, rgb(50, 155, 229) 40%,rgb(62, 135, 220) 40%, rgb(62, 135, 220) 66%,rgb(74, 116, 211) 66%, rgb(74, 116, 211) 72%,rgb(86, 96, 202) 72%, rgb(86, 96, 202) 86%,rgb(97, 77, 194) 86%, rgb(97, 77, 194) 96%,rgb(109, 57, 185) 96%, rgb(109, 57, 185) 100%);
   color: #333;
   text-align: center;
   border: 8px solid;
@@ -20,7 +22,9 @@ body {
   transform: rotate(0) scale(0);
   animation: boom 1s linear;
   animation-fill-mode: forwards;
+  
 }
+
 
 
 
@@ -39,8 +43,13 @@ body {
   width: 100%;
   color: #222;
   font-size: 40px;
+  font-family: 'Poppins, san-serif';
   text-shadow: 0 1px 2px;
   animation: pulse 6s linear infinite;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  
+
 }
 
 @keyframes pulse {
@@ -51,6 +60,7 @@ body {
 
 #titleScreen p {
   font-weight: bold;
+  font-size: 35px;
 }
 
 #titleScreen span {
@@ -58,6 +68,7 @@ body {
   font-size: 18px;
   animation: up 2s linear infinite;
   animation-delay: 3s;
+  text-align:center
 }
 
 @keyframes up {
@@ -73,3 +84,5 @@ body {
   animation: pulse 1.5s linear infinite;
 }
 
+overflow-y: hidden; 
+overflow-x: hidden; 
