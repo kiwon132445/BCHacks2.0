@@ -21,21 +21,20 @@ class gameplay_scene extends Phaser.Scene {
         });
 
         this.load.image('covid', '../../assets/covid.png')
-        this.load.image('statusBar','../../assets/Bar.jpg')
+        this.load.image('statusBar','../../assets/Bar.png')
     }
 
     create() {
         this.background = this.add.tileSprite(0,0,this.scale.width, this.scale.height,"background");
         this.background.setOrigin(0,0);
         
-        // var statusBar=new statusBar();
-        // statusBar.x=game.width/2-statusBar;
-        // statusBar.y=game.height/2;
-        // statusBar.setPercent()
+        
 
         this.addPlayer();
 
-        for(let i = 0; i < 10; i++) {
+        this.hp = new HealthBar(this, this.scale.width - 520, 10, this.player);
+
+        for(let i = 0; i < 20; i++) {
             this.spawnCovid();
         }
 
@@ -63,13 +62,13 @@ class gameplay_scene extends Phaser.Scene {
     }
     
     update() {
+        this.hp.draw();
         this.background.tilePositionY -=1.5;
         //the player control
         this.player.player_controls();
         if (this.counter >= this.difficulty && this.covid.children.entries.length <= 100) {
             this.spawnCovid();
             this.counter = 0;
-            this.difficulty += 1;
         }
         for (let i = 0; i < this.covid.children.entries.length; i++) {
             this.covid.children.entries[i].fallingCovid();
@@ -115,6 +114,7 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     infection(player, covid) {
+        
         covid.disableBody(true, true);
         player.playerHealth-=1;
         console.log("Player Health: " + player.playerHealth);

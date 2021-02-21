@@ -11,6 +11,12 @@ class Player extends Phaser.Physics.Arcade.Sprite {
       left: Phaser.Input.Keyboard.KeyCodes.A,
       right: Phaser.Input.Keyboard.KeyCodes.D
     });
+    // this.key = this.scene.input.keyboard.addKeys({
+    //   up: 'up',
+    //   down: 'down',
+    //   left: 'left',
+    //   right: 'right'
+    // });
   }
 
   player_controls() {
