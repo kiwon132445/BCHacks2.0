@@ -20,7 +20,7 @@ class gameplay_scene extends Phaser.Scene {
             endFrame: 3
         });
 
-        this.load.image('covid', '../../assets/amongus.png')
+        this.load.image('covid', '../../assets/covid.png')
         this.load.image('statusBar','../../assets/Bar.jpg')
         this.load.image('mask','../../assets/mask.png')
     }
