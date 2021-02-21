@@ -10,15 +10,19 @@ class gameplay_scene extends Phaser.Scene {
     }
 
     preload() {
+        this.load.image('background','../../assets/background.png');
         this.load.image('player', '../../assets/dog.jpg');
         this.load.image('covid', '../../assets/covid.jpg')
     }
 
     create() {
+        this.background = this.add.tileSprite(0,0,config.width,config.height,"background");
+        this.background.setOrigin(0,0);
         this.addPlayer();
     }
     
     update() {
+        this.background.tilePositionY -=0.5;
         //the player control
         this.player.player_controls();
         for (i in this.covid) {
