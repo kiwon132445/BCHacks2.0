@@ -1,7 +1,10 @@
 body {
+  display: flex;
+  align-items: center;
   height: 100vh;
   background: linear-gradient(#333, rgb(0, 0, 0)) no-repeat;
-
+  overflow-y: hidden; 
+  overflow-x: hidden; 
 }
 
 #titleScreen {
@@ -28,12 +31,7 @@ body {
   }
 }
 
-#titleScreen div {
-  height: 50%;
-}
-
 #titleScreen h1 {
-  position:absolute;
   color: #222;
   font-size: 45px;
   font-family: 'Poppins, san-serif';
@@ -56,7 +54,8 @@ body {
 }
 
 #rules {
-  position:absolute;
+  display: flex;
+  justify-content: center;
   font-weight: bold;
   font-size: 20px;
   top: 33%;
@@ -109,5 +108,3 @@ a:visited {
   animation: pulse 1.5s linear infinite;
 }
 
-overflow-y: hidden; 
-overflow-x: hidden; 

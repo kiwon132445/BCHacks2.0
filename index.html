@@ -25,64 +25,60 @@
 <body>
 
 <div id="titleScreen">
-    <div>
-        <h1>Covid runaway Game</h1>
-    </div>
+    <h1>Covid runaway Game</h1>
     <div>
         <div id="rules">
-            RULES:<br/> - You must use w,a,s,d keys <br/>- Dodge the Corona Virus. If you get hit 3 times, your out. 
-            <br/> - You can view your health at the top. <br/>- Aim to collect masks to maintain mask usability. If it reaches 0, that will be fatal.
-    
+            <ul style="width: 80%;">
+                RULES:
+                <li>WASD is used to move your character around</li>
+                <li>Dodge the Corona Virus. If you get contaminated the Corona Virus 3 times <br>you will be sent to the hospital.</li>
+                <li>Once your mask durability hits 0, you will sent to the hospital</li>
+                <li>You can view your health at the top.</li>
+                <li>Aim to collect masks to replace the mask with a new one.</li>
+                <li>Obtain Sanitizer to disinfect yourself and recover your immunities.</li>
+            </ul>
+        </div>
+        
         <p>Click<a style="text-decoration: none" href="/src/game.html"> HERE </a><br/>OR <br/> Press UP Arrow (<span>&uarr;</span>) To Begin!</p>
-        
-       
-
     </div>
-
         
-        
-        <script type="text/javascript">
-
-        window.addEventListener('keyup', function (e) {
-            document.location.href ='./src/game.html';
-            })
-
-        
-		document.onmousemove = animateCircles;
-
-		var colors = ['#ccc','#6cf','#eba13a'];
-
-		function animateCircles (event) {
-			var circle = document.createElement("div");
-            setTimeout(function() {
-                circle.remove();
-            }, 200);
-            
-			circle.setAttribute("class", "circle");
-			document.body.appendChild(circle);
-
-			circle.style.left = event.clientX + 'px';
-			circle.style.top = event.clientY + 'px';
-
-			var color = colors[Math.floor(Math.random() * colors.length)];
-			circle.style.borderColor = color;
-
-			circle.style.transition = "all 0.5s linear 0s";
-
-			circle.style.left = circle.offsetLeft - 20 + 'px';
-			circle.style.top = circle.offsetTop - 20 + 'px';
-
-			circle.style.width = "50px";
-			circle.style.height = "50px";
-			circle.style.borderWidth = "5px";
-			circle.style.opacity = 0;
-			
-		}
-
-
-		</script>
-    </div>
-   
 </div>
+
+<script type="text/javascript">
+    window.addEventListener('keyup', function (e) {
+        document.location.href ='./src/game.html';
+        })
+
+    document.onmousemove = animateCircles;
+    var colors = ['#ccc','#6cf','#eba13a'];
+
+    function animateCircles (event) {
+        var circle = document.createElement("div");
+        setTimeout(function() {
+            circle.remove();
+        }, 200);
+        
+        circle.setAttribute("class", "circle");
+        document.body.appendChild(circle);
+
+        circle.style.left = event.clientX + 'px';
+        circle.style.top = event.clientY + 'px';
+
+        var color = colors[Math.floor(Math.random() * colors.length)];
+        circle.style.borderColor = color;
+
+        circle.style.transition = "all 0.5s linear 0s";
+
+        circle.style.left = circle.offsetLeft - 20 + 'px';
+        circle.style.top = circle.offsetTop - 20 + 'px';
+
+        circle.style.width = "50px";
+        circle.style.height = "50px";
+        circle.style.borderWidth = "5px";
+        circle.style.opacity = 0;
+    }
+
+
+</script>
 </body>
 </html>
