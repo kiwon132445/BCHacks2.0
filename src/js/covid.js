@@ -16,6 +16,7 @@ class Covid extends Phaser.Physics.Arcade.Sprite {
         }
     }
 
+    //why reset and not remove?
     resetCovid() {
         this.y = 0
         this.x = Phaser.Math.Between(0, this.scene.scale.width);
